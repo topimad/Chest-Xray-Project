@@ -1,0 +1,420 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>Chest Xray| guest interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Cassi Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}"/>
+    <!-- <link rel="stylesheet" href="{% static 'assets3/stylechat.css' %}"> -->
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <!-- Material Symbols Rounded -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+    <style>
+      
+      .container .card {
+        position: relative;
+        min-width: 320px;
+        height: 380px;
+        box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+          inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+          5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        margin: 30px;
+        transition: 0.5s;
+      }
+      .container .card .box {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        background: #2a2b2f;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: 0.5s;
+      }
+      .container .card .box:hover {
+        transform: translateY(-50px);
+      }
+      .container .card .box .content {
+        padding: 20px;
+        text-align: center;
+      }
+      .container .card .box .content .content {
+        font-size: 1.8rem;
+        color: #fff;
+      }
+      .container .card .box .content p {
+        font-size: 1rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .container .card .box .content a {
+        padding: 8px 20px;
+        background: black;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        margin-top: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+      }
+      .container .card .box .content a:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        background: #fff;
+        color: #000;
+      }
+
+  .sel select {
+    width: 100%; 
+    padding: 10px 15px;
+    background-color: #222; 
+    color: #fff; 
+    border: 1px solid #444; 
+    border-radius: 5px; 
+    margin-bottom: 10px; 
+    cursor: pointer;
+  }
+
+ 
+  .sel select:hover,
+  .sel select:focus {
+    background-color: #555; 
+    border-color: #666;
+  }
+  .chatbot-toggler {
+  position: fixed;
+  border: solid whitesmoke 2px;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #333333; 
+  transition: all 0.2s ease;
+}
+.chatbot-toggler:hover,
+.chatbot-toggler:focus {
+  background: whitesmoke;
+  border: solid #333333 2px;
+  color: #333333;
+}
+body.show-chatbot .chatbot-toggler {
+  transform: rotate(90deg);
+}
+.chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+}
+.chatbot-toggler span:hover,
+.chatbot-toggler span:focus {
+  color: #333333;
+  position: absolute;
+}
+
+.chatbot-toggler span:last-child,
+body.show-chatbot .chatbot-toggler span:first-child  {
+  opacity: 0;
+}
+body.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
+}
+.chatbot {
+  position: fixed;
+  right: 35px;
+  bottom: 90px;
+  width: 380px; /* Reduced width */
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+  transition: all 0.1s ease;
+}
+body.show-chatbot .chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.chatbot header {
+  padding: 16px 0;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: #333333; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.chatbot header span {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+header h2 {
+  font-size: 1.4rem;
+}
+.chatbot .chatbox {
+  overflow-y: auto;
+  height: 400px; 
+  padding: 30px 20px 100px;
+}
+.chatbox .chat {
+  display: flex;
+  list-style: none;
+}
+.chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+.chatbox .incoming span {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  cursor: default;
+  text-align: center;
+  line-height: 32px;
+  align-self: flex-end;
+  background: #333333; 
+  border-radius: 4px;
+  margin: 0 10px 7px 0;
+}
+.chatbox .chat p {
+  white-space: pre-wrap;
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 10px;
+  max-width: 75%;
+  color: #fff;
+  font-size: 0.95rem;
+  background: #333333; 
+}
+.chatbox .incoming p {
+  border-radius: 10px 10px 10px 0;
+  color: #000;
+  background: #f2f2f2;
+}
+.chatbot .chat-input {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 3px 20px;
+  border-top: 1px solid #ddd;
+}
+.chat-input textarea {
+  height: 55px;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  max-height: 180px;
+  padding: 15px 15px 15px 0;
+  font-size: 0.95rem;
+}
+.chat-input span {
+  align-self: flex-end;
+  color: #333333; 
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  font-size: 1.35rem;
+}
+.chat-input textarea:valid ~ span {
+  visibility: visible;
+}
+
+      
+  </style>
+
+</head>
+<body style="color: #212529; background: #151515;">
+        <!-- Page Preloder -->
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+    
+        <div class="offcanvas-menu-wrapper">
+            <div class="menu-header">
+                <a href="{% url 'signup' %}" class="site-logo">
+                    <img src="{% static 'img/logo2.jpg' %}" height="40" width="60" alt="">
+                    <span style="color: white;">Chest Xray</span> 
+                </a>
+                <div class="menu-switch" id="menu-canvas-close">
+                    <i class="icon_close"></i>
+                </div>
+            </div>
+            <ul class="main-menu">
+                <li><a href="{% url 'doctor_login' %}" class="active">Doctor sign in</a></li>
+                <li><a href="{% url 'guest' %}">Medical chatbot</a></li>
+                <!-- <li><a href="{% url 'signup' %}">Blog</a></li> -->
+                <li><a href="{% url 'about' %}">About us</a></li>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                
+            </ul>
+        </div>
+    <!-- Header section -->
+    <header class="header-section">
+        <a href="{% url 'doctoriterface' %}" class="site-logo">
+            <img src="{% static 'img/logo2.jpg' %}" alt="Chest Xray" height="40" width="60" alt="">
+            <span style="color: white;">Chest Xray</span> 
+        </a>
+        <div class="menu-switch" id="menu-canvas-show">
+            <i class="icon_menu"></i>
+        </div>
+    </header>
+
+    <!-- Header section end -->
+
+    <section class="blog-single-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 m-auto blog-content">
+                   <center>
+                    <br>
+                  <form method="POST" class="comment-form">
+                    {% csrf_token %}
+                    <div class="sel sel--superman">
+                      <select name="ville">
+                        {% for resultCity in filtered_cities %}
+                          <option value="{{ resultCity }}">{{ resultCity }}</option>
+                        {% endfor %}
+                      </select>
+                      &nbsp; &nbsp;<select name="Specialiter" >
+                        {% for resultCategory in filtered_Specialiter %}
+                          <option value="{{ resultCategory }}">{{ resultCategory }}</option>
+                        {% endfor %}
+                      </select>
+                       &nbsp;<button type="submit" class="site-btn" style="padding: 09px 25px; font-size: 12px; background-color: rgb(0, 0, 0); color: white">Search</button>
+                    </div>               
+                  </form></center>
+                
+            </div>
+        </div>
+    </section>
+	
+  {% for doctor in data %}
+  <div class="container">
+    <div class="card">
+      <div class="box">
+        <div class="content">
+          <span class="heading"><img src=" {{ doctor.image}}" alt="" height="100" width="100"></span>
+          <span class="content"> {{ doctor.DoctorName }}</span>
+          <p>{{ doctor.Specialiter }}</p>
+          <p>{{ doctor.Location }}</p>
+          <a href="{{ doctor.Link }}">View Doctor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+	 <!-- Chatbot frontend code -->
+      <button class="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="chatbot">
+        <header>
+          <h2 style="color: white;">Medical Bot</h2>
+          <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+          <li class="chat incoming">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <p>Hi there <br>How can I help you today?</p>
+          </li>
+        </ul>
+        <div class="chat-input">
+          <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+          <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+      </div>
+      
+      
+      <script>
+        document.getElementById("send-btn").addEventListener("click", sendMessage);
+        
+        function sendMessage() {
+            let userText = document.querySelector(".chat-input textarea").value;
+            if (userText.trim().length > 0) {
+                document.querySelector(".chat-input textarea").value = "";  
+                updateChat(userText, "userText");
+                
+                fetch(`/chatbot/?msg=${encodeURIComponent(userText)}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Successful request: ', data);
+                    
+                    const botResponse = data['response']; 
+                    updateChat(botResponse, 'botText');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        
+            } else {
+                alert("Please enter some text to send!");
+            }
+        }
+        
+        function updateChat(text, className) {
+            let chatbox = document.querySelector(".chatbox");
+            let newMessage = document.createElement('li');
+            newMessage.classList.add("chat", className === "userText" ? "outgoing" : "incoming");
+            newMessage.innerHTML = `
+                <span class="material-symbols-outlined">${className === "userText" ? "mode_comment" : "smart_toy"}</span>
+                <p>${text}</p>`;
+            chatbox.appendChild(newMessage);
+            chatbox.scrollTop = chatbox.scrollHeight;  
+        }
+        </script>
+
+<script src="{% static 'assets3/scriptchat.js' %}"></script>
+    <!--====== Javascripts & Jquery ======-->
+    
+    
+    <script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/main.js' load static %}"></script>
+    
+
+    </body>
+</html>

@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>Chest Xray | Covid19 - Pneumonie - Natural</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Cassi Chest X Ray HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}"/>
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section -->
+    <div class="offcanvas-menu-wrapper">
+        <div class="menu-header">
+            <a href="{% url 'signup' %}" class="site-logo">
+                <img src="{% static 'img/logo2.jpg' %}" height="40" width="60" alt="">
+                <span style="color: white;">Chest Xray</span> 
+            </a>
+            <div class="menu-switch" id="menu-canvas-close">
+                <i class="icon_close"></i>
+            </div>
+        </div>
+        <ul class="main-menu">
+            <li><a href="{% url 'doctor_login' %}" class="active">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign up</a></li>
+            <!-- <li><a href="{% url 'signup' %}">Blog</a></li> -->
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'guest' %}">Guest</a></li>
+        </ul>
+        <div class="menu-footer">
+            <div class="footer-social">
+                <a href="{% url 'doctor_login' %}">Log in</a>
+                <a href="{% url 'signup' %}">Sign up</a>
+                <a href="{% url 'guest' %}">Connect as guest</a>
+                <a href="{% url 'about' %}">About us</a>
+            </div>
+        </div>
+    </div>
+    <!-- Offcanvas Menu Section end -->
+    
+    <!-- Header section -->
+    <header class="header-section">
+        <a href="{% url 'index' %}" class="site-logo">
+            <img src="{% static 'img/logo2.jpg' %}" height="40" width="60" alt="">
+            <span style="color: white;">Chest Xray</span> 
+        </a>
+        <div class="menu-switch" id="menu-canvas-show">
+            <i class="icon_menu"></i>
+        </div>
+    </header>
+    <!-- Header section end -->
+
+    <!-- Hero section -->
+    <section class="hero-section">
+        <div class="hero-slider owl-carousel">
+            <div class="hero-item">
+                <div class="hero-text">
+                    <div class="ht-cata">Nature</div>
+                    <h2>Chest X Ray</h2>
+                    <p>Using AI, our platform swiftly classifies chest X-rays, aiding in the diagnosis of normal, COVID-19, or pneumonia cases. Streamlining healthcare, it empowers informed decision-making and enhances patient care.</p>
+                    <a href="{% url 'signup' %}" class="ht-btn">See More <i class="arrow_right"></i></a>
+                </div>
+                <div class="hi-bg set-bg" data-setbg="{% static 'img/slider-1.jpg' %}"></div>
+            </div>
+            <div class="hero-item">
+                <div class="hero-text">
+                    <div class="ht-cata">Nature</div>
+                    <h2>Chest X Ray</h2>
+                    <p>Using AI, our platform swiftly classifies chest X-rays, aiding in the diagnosis of normal, COVID-19, or pneumonia cases. Streamlining healthcare, it empowers informed decision-making and enhances patient care.</p>
+                    <a href="{% url 'signup' %}" class="ht-btn">See More <i class="arrow_right"></i></a>
+                </div>
+                <div class="hi-bg set-bg" data-setbg="{% static 'img/slider-2.jpg' %}"></div>
+            </div>
+            <div class="hero-item">
+                <div class="hero-text">
+                    <div class="ht-cata">Nature</div>
+                    <h2>Chest X Ray</h2>
+                    <p>Using AI, our platform swiftly classifies chest X-rays, aiding in the diagnosis of normal, COVID-19, or pneumonia cases. Streamlining healthcare, it empowers informed decision-making and enhances patient care.</p>
+                    <a href="{% url 'signup' %}" class="ht-btn">See More <i class="arrow_right"></i></a>
+                </div>
+                <div class="hi-bg set-bg" data-setbg="{% static 'img/slider-31.jpg' %}"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section end -->
+
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="footer-social">
+            <a href="{% url 'doctor_login' %}">Log in</a>
+            <a href="{% url 'signup' %}">Sign up</a>
+            <a href="{% url 'guest' %}">Connect as guest</a>
+            <a href="{% url 'about' %}">About us</a>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/main.js' load static %}"></script>
+
+    </body>
+</html>

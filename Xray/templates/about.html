@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Chest Xray | About page</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Cassi Photo Studio HTML Template">
+	<meta name="keywords" content="photo, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Stylesheets -->
+    
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}"/>
+
+<!-- Main Stylesheets -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	 <!-- Offcanvas Menu Section -->
+	 <div class="offcanvas-menu-wrapper">
+        <div class="menu-header">
+            <a href="{% url 'signup' %}" class="site-logo">
+                <img src="{% static 'img/logo2.jpg' %}" height="40" width="60" alt="">
+                <span style="color: white;">Chest Xray</span> 
+            </a>
+            <div class="menu-switch" id="menu-canvas-close">
+                <i class="icon_close"></i>
+            </div>
+        </div>
+        <ul class="main-menu">
+			<li><a href="{% url 'about' %}">Home</a></li>
+            <li><a href="{% url 'doctor_login' %}" class="active">Doctor Sign in</a></li>
+            <li><a href="{% url 'guest' %}">Medical chatbot</a></li>
+            <!-- <li><a href="{% url 'signup' %}">Blog</a></li> -->
+            <!-- <li><a href="#">signup</a></li> -->
+        </ul>
+        <div class="menu-footer">
+            <div class="footer-social">
+                <a href="{% url 'doctor_login' %}">Log in</a>
+                <a href="{% url 'signup' %}">Sign up</a>
+				<a href="{% url 'guest' %}">Connect as guest</a>
+                <a href="{% url 'about' %}">About us</a>
+            </div>
+        </div>
+    </div>
+    <!-- Offcanvas Menu Section end -->
+	
+	 <!-- Header section -->
+	 <header class="header-section">
+        <a href="{% url 'index' %}" class="site-logo">
+            <img src="{% static 'img/logo2.jpg' %}" height="40" width="60" alt="">
+            <span style="color: white;">Chest Xray</span> 
+        </a>
+        <div class="menu-switch" id="menu-canvas-show">
+            <i class="icon_menu"></i>
+        </div>
+    </header>
+    <!-- Header section end -->
+
+
+	<!-- Page top section -->
+	<div class="page-top-section">
+		<div class="page-top-warp set-bg" data-setbg="{% static 'img/gb.jpg' %}">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9">
+						<h3 style="color: white;">Welcome To Chest X-ray</h3>
+						<br>
+						<p style="color: whitesmoke;">Chest X-ray Platform harnesses the power of artificial intelligence models to revolutionize the classification of chest X-ray images. By employing advanced algorithms, this platform assists medical professionals in swiftly determining whether an X-ray depicts a normal condition, COVID-19 infection, or pneumonia. Through rapid and accurate analysis, it equips doctors with vital insights, enabling them to make informed decisions promptly. Moreover, the platform goes beyond mere classification by generating comprehensive medical reports, further streamlining the diagnostic process and enhancing patient care.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page top section end -->
+
+	<!-- About section -->
+<section class="about-section">
+	<div class="container">
+		<div class="row about-item">
+			<div class="col-lg-3">
+				<h2>Our Story</h2>
+			</div>
+			<div class="col-lg-9">
+				<div class="ai-text">
+					<h4>In a world filled with complexities, we sought to innovate healthcare.</h4>
+					<p>Driven by the transformative potential of artificial intelligence, we embarked on a mission to redefine medical imaging. Our journey was born out of a deep-rooted desire to revolutionize diagnostic processes and enhance patient care. Inspired by the power of innovation, we envisioned a solution that would empower healthcare professionals and improve patient outcomes.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row about-item">
+			<div class="col-lg-3">
+				<h2>What We Do?</h2>
+			</div>
+			<div class="col-lg-9">
+				<div class="ai-text">
+					<h4>Empowering healthcare with AI-driven diagnostic solutions.</h4>
+					<p>At the core of our platform lies the power of artificial intelligence, enabling swift and accurate classification of chest X-ray images. Beyond diagnosis, we provide healthcare professionals with the tools to generate comprehensive medical reports efficiently. Our mission extends beyond innovation; it's about transforming the way healthcare is delivered, ensuring timely and informed decision-making for improved patient care.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+	<!-- About section end -->
+
+	<!-- Footer section -->
+    <footer class="footer-section">
+        <div class="footer-social">
+            <a href="{% url 'doctor_login' %}">Log in</a>
+            <a href="{% url 'signup' %}">Sign up</a>
+            <a href="#">Contact us</a>
+        </div>
+    </footer>
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/main.js' load static %}"></script>
+
+	</body>
+</html>

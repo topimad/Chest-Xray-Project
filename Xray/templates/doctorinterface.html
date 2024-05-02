@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>Chest Xray| Doctor interface</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Cassi Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}"/>
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+
+ 
+
+</head>
+<body style="color: #212529; background: #151515;">
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <div class="offcanvas-menu-wrapper">
+        <div class="menu-header">
+            <a href="{% url 'signup' %}" class="site-logo">
+                <img src="{% static 'img/logo2.jpg' %}" height="40" width="60" alt="">
+                <span style="color: white;">Chest Xray</span> 
+            </a>
+            <div class="menu-switch" id="menu-canvas-close">
+                <i class="icon_close"></i>
+            </div>
+        </div>
+        <ul class="main-menu">
+            <li><a href="{% url 'doctoriterface' %}" class="active">Xray classification</a></li>
+            <li><a href="{% url 'list_documents' %}">Medical reports</a></li>
+            <!-- <li><a href="{% url 'signup' %}">Blog</a></li> -->
+            <!-- <li><a href="#">Medical ChatBot</a></li> -->
+            <li><a href="{% url 'logout' %}">logout</a></li>
+            
+        </ul>
+    </div>
+    
+    <!-- Header section -->
+    <header class="header-section">
+        <a href="{% url 'doctoriterface' %}" class="site-logo">
+            <img src="{% static 'img/logo2.jpg' %}" height="40" width="60" alt="">
+            <span style="color: white;">Chest Xray</span> 
+        </a>
+        <div class="menu-switch" id="menu-canvas-show">
+            <i class="icon_menu"></i>
+        </div>
+    </header>
+    <!-- Header section end -->
+
+    <section class="blog-single-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 m-auto blog-content">
+                    <!-- Formulaire d'upload d'image -->
+
+                    {% if context %}
+                            
+                                <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
+                                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+                                <div class="alert alert-success" id="alertDiv" role="alert" style="font-size: 20px;">
+
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong>Success!</strong> {{ context }}
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+                                <script>
+                                    $(document).ready(function() {
+                                        setInterval(function() {
+                                            $(".alert").fadeOut();
+                                        }, 3000);
+                                    });
+                                </script>
+
+                        
+                        <!-- <div class="col-lg-10 m-auto blog-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <h2 style="color: rgb(98, 198, 10);">{{ context }}</h2> -->
+                        <!-- </div></div> -->
+                        {% endif %}  
+                        <form method="post" action="{% url 'predict_pneumonia' %}" enctype="multipart/form-data" class="comment-form">
+                        {% csrf_token %}
+                        <h4 class="comment-title">Predict your Chest Xray</h4>
+                                <div class="row">
+                            <div class="col-lg-12">
+                                <input type="file" name="image_file" height="100" width="100">
+                                <button type="submit" class="site-btn" style="padding: 12px 12px; font-size: 12px; background-color: rgb(0, 0, 0); color: white">View result</button>
+                            </div>
+                                </div>
+                        </form>
+                    
+                    {% if result %}
+                        <div class="col-lg-10 m-auto blog-content">
+                            <div class="row">
+                            <div class="col-lg-12">
+                            <h2 style="color: white;">Prediction Result : <span style="color: rgb(44, 133, 168);"> {{ result }}</span> </h2>
+                            <button id="toggleReportForm" class="site-btn" style="padding: 10px 10px; font-size: 12px; background-color: rgb(44, 133, 168); color: white">Generate report</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                        <!-- Initially hidden form -->
+                        <div id="reportForm" style="display: none;">
+                            <form class="comment-form" method="post" action="{% url 'generate_report' %}">
+                                {% csrf_token %}
+                                <h4 class="comment-title">Report information</h4>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <input type="text" name="firstname" placeholder="Patient firstname" required>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="lastname" placeholder="Patient lastname" required>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea name="case_description" placeholder="Patient case description" required></textarea>
+                                    </div>
+                                    <input type="hidden" name="temp_img_path" value="{{ temp_img_path }}">
+                                    <button class="site-btn" style="padding: 12px 12px; font-size: 12px; background-color: rgb(0, 0, 0); color: white">Submit Report</button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}                    
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/main.js' load static %}"></script>
+    <script>
+        document.getElementById('toggleReportForm').addEventListener('click', function() {
+            var form = document.getElementById('reportForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+    
+
+    </body>
+</html>
